@@ -1,4 +1,4 @@
-**Mapudungun · [Amutuy tañi zugun kimün](../Read.md)**
+**Mapudungun · [Amutuy tañi zugun kimün](../readme.md)**
 # Ruka kelluay ka küme zugun mew
 
 **Zugun:** Mapudungun

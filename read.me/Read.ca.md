@@ -1,6 +1,6 @@
 # Assistent domòtic multiidioma
 
-**Idioma:** Català · [Torna a triar l'idioma](../Read.md)
+**Idioma:** Català · [Torna a triar l'idioma](../readme.md)
 
 **Llegeix-ho en:** [Català](Read.ca.md) · [English](Read.en.md) · [Español](Read.es.md) · [Français](Read.fr.md) · [Deutsch](Read.de.md) · [Italiano](Read.it.md) · [Português](Read.pt.md) · [Nederlands](Read.nl.md)
 

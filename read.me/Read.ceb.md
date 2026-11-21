@@ -1,4 +1,4 @@
-**Pinulongan: Sinugboanon · [Balik sa pagpili og pinulongan](../Read.md)**
+**Pinulongan: Sinugboanon · [Balik sa pagpili og pinulongan](../readme.md)**
 
 # Multilingguwal nga Smart Home Assistant
 

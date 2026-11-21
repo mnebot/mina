@@ -1,4 +1,4 @@
-**Norsk bokmål** · [Tilbake til språkvalget](../Read.md)
+**Norsk bokmål** · [Tilbake til språkvalget](../readme.md)
 
 # Flerspråklig hjemmeassistent
 

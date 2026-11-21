@@ -1,6 +1,6 @@
 # Mehrsprachiger Smart-Home-Assistent
 
-**Sprache:** Deutsch · [Zur Sprachauswahl](../Read.md)
+**Sprache:** Deutsch · [Zur Sprachauswahl](../readme.md)
 
 **Lesen auf:** [Català](Read.ca.md) · [English](Read.en.md) · [Español](Read.es.md) · [Français](Read.fr.md) · [Deutsch](Read.de.md) · [Italiano](Read.it.md) · [Português](Read.pt.md) · [Nederlands](Read.nl.md)
 

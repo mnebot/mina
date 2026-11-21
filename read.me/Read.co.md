@@ -1,4 +1,4 @@
-**Corsu · [Torna à a scelta di a lingua](../Read.md)**
+**Corsu · [Torna à a scelta di a lingua](../readme.md)**
 
 # Assistente multilingue per a casa intelligente
 

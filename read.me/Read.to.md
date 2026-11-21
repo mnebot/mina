@@ -1,4 +1,4 @@
-**Lea faka-Tonga · [Foki ki he fili lea](../Read.md)**
+**Lea faka-Tonga · [Foki ki he fili lea](../readme.md)**
 # Tokoni ki he ʻapi poto ʻi he ngaahi lea kehekehe
 
 **Lea:** Faka-Tonga

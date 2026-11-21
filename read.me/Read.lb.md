@@ -1,4 +1,4 @@
-**Lëtzebuergesch** · [Zréck zur Sproochauswiel](../Read.md)
+**Lëtzebuergesch** · [Zréck zur Sproochauswiel](../readme.md)
 
 # Méisproochegen Hausassistent
 

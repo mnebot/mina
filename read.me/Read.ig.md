@@ -1,4 +1,4 @@
-**Asụsụ: Igbo · [Laghachi na nhọrọ asụsụ](../Read.md)**
+**Asụsụ: Igbo · [Laghachi na nhọrọ asụsụ](../readme.md)**
 
 # Onye enyemaka ụlọ amamịghe nke ọtụtụ asụsụ
 

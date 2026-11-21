@@ -1,4 +1,4 @@
-**Hrvatski · [Natrag na odabir jezika](../Read.md)**
+**Hrvatski · [Natrag na odabir jezika](../readme.md)**
 
 # Višejezični asistent za pametni dom
 

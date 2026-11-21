@@ -1,4 +1,4 @@
-**Avañe’ẽ · [Jevy eiporavo hag̃ua ñe’ẽ](../Read.md)**
+**Avañe’ẽ · [Jevy eiporavo hag̃ua ñe’ẽ](../readme.md)**
 # Óga pytyvõhára heta ñe’ẽme
 
 **Ñe’ẽ:** Avañe’ẽ

@@ -1,4 +1,4 @@
-**Latviešu** · [Atpakaļ uz valodas izvēli](../Read.md)
+**Latviešu** · [Atpakaļ uz valodas izvēli](../readme.md)
 
 # Daudzvalodu mājas asistents
 

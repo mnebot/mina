@@ -1,4 +1,4 @@
-**Èdè: Yorùbá · [Padà sí àṣàyàn èdè](../Read.md)**
+**Èdè: Yorùbá · [Padà sí àṣàyàn èdè](../readme.md)**
 
 # Olùrànlọ́wọ́ ilé ọlọ́gbọ́n ní onírúurú èdè
 

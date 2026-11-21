@@ -1,4 +1,4 @@
-**Puo: Setswana · [Boela kwa go tlhopho ya puo](../Read.md)**
+**Puo: Setswana · [Boela kwa go tlhopho ya puo](../readme.md)**
 
 # Mothusi wa legae wa botlhale jwa maitirelo wa dipuo di le dintsi
 

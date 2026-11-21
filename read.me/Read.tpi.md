@@ -1,4 +1,4 @@
-**Tok Pisin · [Go bek long makim tok](../Read.md)**
+**Tok Pisin · [Go bek long makim tok](../readme.md)**
 # Planti tokples smart haus helpa
 
 **Tokples:** Tok Pisin

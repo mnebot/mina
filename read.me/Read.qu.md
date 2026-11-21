@@ -1,4 +1,4 @@
-**Runasimi · [Runasimi akllayman kutiy](../Read.md)**
+**Runasimi · [Runasimi akllayman kutiy](../readme.md)**
 # Achka simipi wasi yanapaq
 
 **Simi:** Runasimi

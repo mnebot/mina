@@ -1,4 +1,4 @@
-**Ngôn ngữ: Tiếng Việt · [Quay lại trang chọn ngôn ngữ](../Read.md)**
+**Ngôn ngữ: Tiếng Việt · [Quay lại trang chọn ngôn ngữ](../readme.md)**
 
 # Trợ lý nhà thông minh đa ngôn ngữ
 

@@ -2,7 +2,7 @@
 
 # Alîkarê mala pirzimanî
 
-**Ziman:** Kurdî (Kurmancî) · [Vegere hilbijartina zimanan](../Read.md)
+**Ziman:** Kurdî (Kurmancî) · [Vegere hilbijartina zimanan](../readme.md)
 
 Ev proje bicîhkirina ekosîstema xaniyê herêmî ya aqilmend li ser Raspberry Pi bi alîkarê dengî yê pirzimanî vedibêje.
 

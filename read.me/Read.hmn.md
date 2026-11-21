@@ -1,4 +1,4 @@
-**Lus: Hmoob · [Rov qab mus xaiv lus](../Read.md)**
+**Lus: Hmoob · [Rov qab mus xaiv lus](../readme.md)**
 
 # Tus pab tsev ntse uas siv ntau hom lus
 

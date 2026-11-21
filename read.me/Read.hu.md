@@ -1,4 +1,4 @@
-**Magyar · [Vissza a nyelvválasztáshoz](../Read.md)**
+**Magyar · [Vissza a nyelvválasztáshoz](../readme.md)**
 
 # Többnyelvű okosotthon-asszisztens
 

@@ -1,4 +1,4 @@
-**Kalaallisut · [Oqaatsimik toqqaanermut uterit](../Read.md)**
+**Kalaallisut · [Oqaatsimik toqqaanermut uterit](../readme.md)**
 # Illumi ikiorti oqaatsit arlallit atorlugit
 
 **Oqaatsit:** Kalaallisut

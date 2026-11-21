@@ -1,4 +1,4 @@
-**Srpski** · [Nazad na izbor jezika](../Read.md)
+**Srpski** · [Nazad na izbor jezika](../readme.md)
 
 # Višejezični kućni pomoćnik
 

@@ -1,4 +1,4 @@
-**Ulwimi: isiXhosa · [Buyela kukhetho lweelwimi](../Read.md)**
+**Ulwimi: isiXhosa · [Buyela kukhetho lweelwimi](../readme.md)**
 
 # Umncedisi wasekhaya okrelekrele osebenzisa iilwimi ezininzi
 

@@ -1,4 +1,4 @@
-**Føroyskt · [Aftur til málval](../Read.md)**
+**Føroyskt · [Aftur til málval](../readme.md)**
 
 # Fleirmálsligur snildheima-assistari
 

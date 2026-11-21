@@ -1,4 +1,4 @@
-**Suomi · [Takaisin kielen valintaan](../Read.md)**
+**Suomi · [Takaisin kielen valintaan](../readme.md)**
 
 # Monikielinen älykodin avustaja
 

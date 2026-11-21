@@ -1,4 +1,4 @@
-**Harshe: Hausa · [Koma zuwa zaɓin harshe](../Read.md)**
+**Harshe: Hausa · [Koma zuwa zaɓin harshe](../readme.md)**
 
 # Mataimakin sarrafa gida mai harsuna da yawa
 

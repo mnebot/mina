@@ -1,4 +1,4 @@
-**Ulimi: isiZulu · [Buyela ekukhetheni ulimi](../Read.md)**
+**Ulimi: isiZulu · [Buyela ekukhetheni ulimi](../readme.md)**
 
 # Umsizi wasekhaya ohlakaniphile osebenzisa izilimi eziningi
 

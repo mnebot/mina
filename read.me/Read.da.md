@@ -1,4 +1,4 @@
-**Dansk · [Tilbage til sprogvalg](../Read.md)**
+**Dansk · [Tilbage til sprogvalg](../readme.md)**
 
 # Flersproget assistent til det intelligente hjem
 

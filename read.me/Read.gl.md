@@ -1,4 +1,4 @@
-**Galego · [Volver á selección do idioma](../Read.md)**
+**Galego · [Volver á selección do idioma](../readme.md)**
 
 # Asistente multilingüe para o fogar intelixente
 

@@ -2,7 +2,7 @@
 
 # Köpmanyly öý kömekçisi
 
-**Dil:** Türkmençe · [Dil saýlamasyna gaýdyp bar](../Read.md)
+**Dil:** Türkmençe · [Dil saýlamasyna gaýdyp bar](../readme.md)
 
 Bu taslama Raspberry Pi-de köpmanyly sesli kömekçi bilen ýerli akylly öý ekosistemasyny ýerleşdirmegi suratlandyrýar.
 

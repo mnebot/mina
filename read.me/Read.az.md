@@ -2,7 +2,7 @@
 
 # Çoxdilli ev asistenti
 
-**Dil:** Azərbaycan · [Dil seçiminə qayıt](../Read.md)
+**Dil:** Azərbaycan · [Dil seçiminə qayıt](../readme.md)
 
 Bu layihə Raspberry Pi üzərində çoxdilli səsli assistentlə yerli ağıllı ev ekosisteminin yerləşdirilməsini təsvir edir.
 

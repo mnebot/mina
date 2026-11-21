@@ -1,4 +1,4 @@
-**Te reo Māori · [Hoki ki te kōwhiri reo](../Read.md)**
+**Te reo Māori · [Hoki ki te kōwhiri reo](../readme.md)**
 # Kaiāwhina kāinga atamai reo-maha
 
 **Reo:** Māori

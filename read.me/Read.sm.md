@@ -1,4 +1,4 @@
-**Gagana Sāmoa · [Toe foʻi e filifili ai le gagana](../Read.md)**
+**Gagana Sāmoa · [Toe foʻi e filifili ai le gagana](../readme.md)**
 # Fesoasoani atamai o le fale i gagana eseese
 
 **Gagana:** Sāmoa

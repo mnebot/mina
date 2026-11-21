@@ -1,4 +1,4 @@
-**Vosa Vakaviti · [Lesu tale ki na digidigi vosa](../Read.md)**
+**Vosa Vakaviti · [Lesu tale ki na digidigi vosa](../readme.md)**
 # Dauveivuke ni vale ena vosa e vuqa
 
 **Vosa:** Vosa Vakaviti

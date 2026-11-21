@@ -1,6 +1,6 @@
 # Assistant domotique multilingue
 
-**Langue :** Français · [Retour au choix de la langue](../Read.md)
+**Langue :** Français · [Retour au choix de la langue](../readme.md)
 
 **Lire en :** [Català](Read.ca.md) · [English](Read.en.md) · [Español](Read.es.md) · [Français](Read.fr.md) · [Deutsch](Read.de.md) · [Italiano](Read.it.md) · [Português](Read.pt.md) · [Nederlands](Read.nl.md)
 

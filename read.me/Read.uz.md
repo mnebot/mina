@@ -2,7 +2,7 @@
 
 # Ko‘p tilli uy yordamchisi
 
-**Til:** O‘zbekcha · [Til tanlashga qaytish](../Read.md)
+**Til:** O‘zbekcha · [Til tanlashga qaytish](../readme.md)
 
 Bu loyiha Raspberry Pi kompyuterida ko‘p tilli ovozli yordamchi bilan mahalliy aqlli uy ekotizimini joylashtirishni tavsiflaydi.
 

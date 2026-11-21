@@ -1,4 +1,4 @@
-**Luqad: Soomaali · [Ku noqo xulashada luqadda](../Read.md)**
+**Luqad: Soomaali · [Ku noqo xulashada luqadda](../readme.md)**
 
 # Kaaliye guri oo caqli badan, luqado badanna ku shaqeeya
 

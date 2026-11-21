@@ -1,4 +1,4 @@
-**Wika: Filipino/Tagalog · [Bumalik sa pagpili ng wika](../Read.md)**
+**Wika: Filipino/Tagalog · [Bumalik sa pagpili ng wika](../readme.md)**
 
 # Multilingual na Smart Home Assistant
 

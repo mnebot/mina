@@ -1,4 +1,4 @@
-**Svenska** · [Tillbaka till språkväljaren](../Read.md)
+**Svenska** · [Tillbaka till språkväljaren](../readme.md)
 
 # Flerspråkig hemassistent
 

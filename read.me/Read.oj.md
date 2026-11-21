@@ -1,4 +1,4 @@
-**Anishinaabemowin · [Gii-onji-izhiwebiziyan gegoo gagwejitoon](../Read.md)**
+**Anishinaabemowin · [Gii-onji-izhiwebiziyan gegoo gagwejitoon](../readme.md)**
 # Ningodwaaso-ayaang ezhi-ayaad maampii gagwejitooying
 
 **Inwewin:** Anishinaabemowin

@@ -1,4 +1,4 @@
-**Lokota: Lingála · [Zonga na kopona lokota](../Read.md)**
+**Lokota: Lingála · [Zonga na kopona lokota](../readme.md)**
 
 # Mosungi ya ndako ya mayele na minoko mingi
 

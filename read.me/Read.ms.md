@@ -1,4 +1,4 @@
-**Bahasa: Bahasa Melayu · [Kembali ke pilihan bahasa](../Read.md)**
+**Bahasa: Bahasa Melayu · [Kembali ke pilihan bahasa](../readme.md)**
 
 # Pembantu Rumah Pintar Pelbagai Bahasa
 

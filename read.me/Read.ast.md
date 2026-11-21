@@ -1,4 +1,4 @@
-**Asturianu · [Volver a escoyer l'idioma](../Read.md)**
+**Asturianu · [Volver a escoyer l'idioma](../readme.md)**
 
 # Asistente multillingüe pa la llar intelixente
 

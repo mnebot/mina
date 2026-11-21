@@ -1,4 +1,4 @@
-**Occitan** · [Tornar a la causida de la lenga](../Read.md)
+**Occitan** · [Tornar a la causida de la lenga](../readme.md)
 
 # Assistent domestic multiidioma
 

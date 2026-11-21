@@ -1,4 +1,4 @@
-**Čeština · [Zpět na výběr jazyka](../Read.md)**
+**Čeština · [Zpět na výběr jazyka](../readme.md)**
 
 # Vícejazyčný asistent pro chytrou domácnost
 

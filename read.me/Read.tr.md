@@ -1,4 +1,4 @@
-**Türkçe** · [Dil seçimine dön](../Read.md)
+**Türkçe** · [Dil seçimine dön](../readme.md)
 
 # Çok Dilli Ev Asistanı
 

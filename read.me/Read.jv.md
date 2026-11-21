@@ -1,4 +1,4 @@
-**Basa: Basa Jawa · [Bali menyang pilihan basa](../Read.md)**
+**Basa: Basa Jawa · [Bali menyang pilihan basa](../readme.md)**
 
 # Asisten Omah Pinter Multibasa
 

@@ -1,4 +1,4 @@
-**Làkk: Wolof · [Delloo ci tànn làkk](../Read.md)**
+**Làkk: Wolof · [Delloo ci tànn làkk](../readme.md)**
 
 # Ndimbal kër gu xereñ ci làkk yu bare
 

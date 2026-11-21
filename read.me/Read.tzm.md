@@ -1,4 +1,4 @@
-**Tutlayt: Tamaziɣt** · [Uɣal ɣer tellaɣt n tutlayin](../Read.md)
+**Tutlayt: Tamaziɣt** · [Uɣal ɣer tellaɣt n tutlayin](../readme.md)
 
 # ⴰⵎⵙⵉⵡⴹ ⵏ ⵜⵓⵜⵍⴰⵢⵉⵏ ⵉⵎⵇⵇⵓⵔⵏ
 

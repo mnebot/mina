@@ -1,4 +1,4 @@
-**Furlan · [Torne ae selezion de lenghe](../Read.md)**
+**Furlan · [Torne ae selezion de lenghe](../readme.md)**
 
 # Assistint multilengâl pe cjase inteligjente
 

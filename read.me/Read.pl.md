@@ -1,4 +1,4 @@
-**Polski** · [Powrót do wyboru języka](../Read.md)
+**Polski** · [Powrót do wyboru języka](../readme.md)
 
 # Wielojęzyczny asystent domowy
 

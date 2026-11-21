@@ -1,4 +1,4 @@
-**Eesti · [Tagasi keelevalikusse](../Read.md)**
+**Eesti · [Tagasi keelevalikusse](../readme.md)**
 
 # Mitmekeelne targa kodu assistent
 

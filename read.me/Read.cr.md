@@ -1,4 +1,4 @@
-**Nēhiyawēwin · [Kīkwāy ē-mācihtāyān, ē-ispayik](../Read.md)**
+**Nēhiyawēwin · [Kīkwāy ē-mācihtāyān, ē-ispayik](../readme.md)**
 # Mēkwāc ē-nitawi-wīcihitowin kīkwāy ē-nitawi-itwēwin
 
 **Itwēwin:** Nēhiyawēwin

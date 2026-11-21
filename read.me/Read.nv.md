@@ -1,4 +1,4 @@
-**Diné bizaad · [Bizaad íiyisíí nihá shá yátiʼ](../Read.md)**
+**Diné bizaad · [Bizaad íiyisíí nihá shá yátiʼ](../readme.md)**
 # Hooghan tʼáá ałtsoh bizaadígíí bee tʼáá íiyisíí naaltsoos
 
 **Bizaad:** Diné bizaad

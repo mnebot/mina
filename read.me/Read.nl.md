@@ -1,6 +1,6 @@
 # Meertalige domotica-assistent
 
-**Taal:** Nederlands · [Terug naar de taalselectie](../Read.md)
+**Taal:** Nederlands · [Terug naar de taalselectie](../readme.md)
 
 **Lees in:** [Català](Read.ca.md) · [English](Read.en.md) · [Español](Read.es.md) · [Français](Read.fr.md) · [Deutsch](Read.de.md) · [Italiano](Read.it.md) · [Português](Read.pt.md) · [Nederlands](Read.nl.md)
 

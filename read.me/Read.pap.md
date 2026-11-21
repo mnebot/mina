@@ -1,4 +1,4 @@
-**Papiamento · [Bai bek pa skohe idioma](../Read.md)**
+**Papiamento · [Bai bek pa skohe idioma](../readme.md)**
 # Asistente di kas inteligente den diferente idioma
 
 **Idioma:** Papiamento

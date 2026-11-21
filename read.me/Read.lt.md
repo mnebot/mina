@@ -1,4 +1,4 @@
-**Lietuvių** · [Grįžti į kalbos pasirinkimą](../Read.md)
+**Lietuvių** · [Grįžti į kalbos pasirinkimą](../readme.md)
 
 # Daugiakalbis namų asistentas
 

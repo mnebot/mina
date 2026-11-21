@@ -1,4 +1,4 @@
-**Bosanski · [Nazad na izbor jezika](../Read.md)**
+**Bosanski · [Nazad na izbor jezika](../readme.md)**
 
 # Višejezični asistent za pametni dom
 

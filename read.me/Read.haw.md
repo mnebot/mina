@@ -1,4 +1,4 @@
-**ʻŌlelo Hawaiʻi · [E hoʻi i ke koho ʻōlelo](../Read.md)**
+**ʻŌlelo Hawaiʻi · [E hoʻi i ke koho ʻōlelo](../readme.md)**
 # Kōkua hale akamai ma nā ʻōlelo he nui
 
 **ʻŌlelo:** Hawaiʻi

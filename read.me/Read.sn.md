@@ -1,4 +1,4 @@
-**Mutauro: ChiShona · [Dzokera pakusarudza mutauro](../Read.md)**
+**Mutauro: ChiShona · [Dzokera pakusarudza mutauro](../readme.md)**
 
 # Mubatsiri wemumba wakangwara wemitauro yakawanda
 

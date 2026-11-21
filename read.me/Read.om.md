@@ -1,4 +1,4 @@
-**Afaan: Oromoo · [Deebi'i filannoo afaaniitti](../Read.md)**
+**Afaan: Oromoo · [Deebi'i filannoo afaaniitti](../readme.md)**
 
 # Gargaaraa mana ammayyaa afaanota hedduu
 

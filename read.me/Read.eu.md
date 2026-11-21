@@ -1,4 +1,4 @@
-**Euskara · [Itzuli hizkuntza-hautaketara](../Read.md)**
+**Euskara · [Itzuli hizkuntza-hautaketara](../readme.md)**
 
 # Etxe adimendunerako laguntzaile eleaniztuna
 

@@ -1,4 +1,4 @@
-**Sardu** · [Torra a sa seberada de sa limba](../Read.md)
+**Sardu** · [Torra a sa seberada de sa limba](../readme.md)
 
 # Assistente domèsticu multilingua
 

@@ -1,4 +1,4 @@
-**Română** · [Înapoi la alegerea limbii](../Read.md)
+**Română** · [Înapoi la alegerea limbii](../readme.md)
 
 # Asistent casnic multilingv
 

@@ -1,4 +1,4 @@
-**Cymraeg** · [Nôl i’r dewis iaith](../Read.md)
+**Cymraeg** · [Nôl i’r dewis iaith](../readme.md)
 
 # Cynorthwyydd cartref aml-ieithog
 

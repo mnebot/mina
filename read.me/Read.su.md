@@ -1,4 +1,4 @@
-**Basa: Basa Sunda · [Balik ka pilihan basa](../Read.md)**
+**Basa: Basa Sunda · [Balik ka pilihan basa](../readme.md)**
 
 # Asistén Imah Pinter Multibasa
 

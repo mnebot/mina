@@ -1,4 +1,4 @@
-**Íslenska · [Aftur í tungumálaval](../Read.md)**
+**Íslenska · [Aftur í tungumálaval](../readme.md)**
 
 # Fjöltyngdur aðstoðarmaður fyrir snjallheimili
 

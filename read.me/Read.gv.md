@@ -1,4 +1,4 @@
-**Gaelg** · [Erash gys yn reih çhengey](../Read.md)
+**Gaelg** · [Erash gys yn reih çhengey](../readme.md)
 
 # Cooneyder thie ymm-lhengagh
 

@@ -1,4 +1,4 @@
-**Lugha: Kiswahili · [Rudi kwenye uchaguzi wa lugha](../Read.md)**
+**Lugha: Kiswahili · [Rudi kwenye uchaguzi wa lugha](../readme.md)**
 
 # Msaidizi mahiri wa nyumbani wa lugha nyingi
 

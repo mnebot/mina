@@ -1,4 +1,4 @@
-**Fiteny: Malagasy · [Hiverina amin'ny fisafidianana fiteny](../Read.md)**
+**Fiteny: Malagasy · [Hiverina amin'ny fisafidianana fiteny](../readme.md)**
 
 # Mpanampy an-trano marani-tsaina amin'ny fiteny maro
 

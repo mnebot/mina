@@ -1,6 +1,6 @@
 # Asistente domótico multilingüe
 
-**Idioma:** Español · [Volver a elegir idioma](../Read.md)
+**Idioma:** Español · [Volver a elegir idioma](../readme.md)
 
 **Leer en:** [Català](Read.ca.md) · [English](Read.en.md) · [Español](Read.es.md) · [Français](Read.fr.md) · [Deutsch](Read.de.md) · [Italiano](Read.it.md) · [Português](Read.pt.md) · [Nederlands](Read.nl.md)
 

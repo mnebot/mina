@@ -1,6 +1,6 @@
 # Multilingual home automation assistant
 
-**Language:** English · [Back to language selection](../Read.md)
+**Language:** English · [Back to language selection](../readme.md)
 
 **Read this in:** [Català](Read.ca.md) · [English](Read.en.md) · [Español](Read.es.md) · [Français](Read.fr.md) · [Deutsch](Read.de.md) · [Italiano](Read.it.md) · [Português](Read.pt.md) · [Nederlands](Read.nl.md)
 

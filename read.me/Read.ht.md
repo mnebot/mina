@@ -1,4 +1,4 @@
-**Kreyòl ayisyen · [Retounen chwazi lang](../Read.md)**
+**Kreyòl ayisyen · [Retounen chwazi lang](../readme.md)**
 # Asistan kay entelijan plizyè lang
 
 **Lang:** Kreyòl ayisyen

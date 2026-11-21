@@ -1,4 +1,4 @@
-**Gàidhlig** · [Till chun an roghainn cànain](../Read.md)
+**Gàidhlig** · [Till chun an roghainn cànain](../readme.md)
 
 # Taic-dachaigh ioma-chànanach
 

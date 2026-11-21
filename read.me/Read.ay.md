@@ -1,4 +1,4 @@
-**Aymar aru · [Ajlliñaru kutt’aña](../Read.md)**
+**Aymar aru · [Ajlliñaru kutt’aña](../readme.md)**
 # Utana yanapt’ir multiidioma
 
 **Aru:** Aymara

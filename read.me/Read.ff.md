@@ -1,4 +1,4 @@
-**Ɗemngal: Pulaar · [Rutto e suɓaade ɗemngal](../Read.md)**
+**Ɗemngal: Pulaar · [Rutto e suɓaade ɗemngal](../readme.md)**
 
 # Japporde kuugal galle e ɗemɗe keewɗe
 

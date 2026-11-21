@@ -1,4 +1,4 @@
-**Shqip · [Kthehu te zgjedhja e gjuhës](../Read.md)**
+**Shqip · [Kthehu te zgjedhja e gjuhës](../readme.md)**
 
 # Asistenti shumëgjuhësh për shtëpinë inteligjente
 

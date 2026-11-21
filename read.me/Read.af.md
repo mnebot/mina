@@ -1,4 +1,4 @@
-**Taal: Afrikaans** · [Terug na taalkeuse](../Read.md)
+**Taal: Afrikaans** · [Terug na taalkeuse](../readme.md)
 
 # Meertalige tuisautomatiseringsassistent
 

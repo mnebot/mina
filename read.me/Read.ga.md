@@ -1,4 +1,4 @@
-**Gaeilge** · [Fill ar ais chuig an rogha teanga](../Read.md)
+**Gaeilge** · [Fill ar ais chuig an rogha teanga](../readme.md)
 
 # Cúntóir baile ilteangach
 

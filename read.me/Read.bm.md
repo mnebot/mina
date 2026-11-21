@@ -1,4 +1,4 @@
-**Kan: Bamanankan** · [Segin kɔ kan sugandili ma](../Read.md)
+**Kan: Bamanankan** · [Segin kɔ kan sugandili ma](../readme.md)
 
 # Kalanbaga min bɛ kan caman mɛn
 

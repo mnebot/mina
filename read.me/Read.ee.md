@@ -1,4 +1,4 @@
-**Keel: eesti · [Tagasi keele valiku juurde](../Read.md)**
+**Keel: eesti · [Tagasi keele valiku juurde](../readme.md)**
 
 # Mitmekeelne koduautomaatika assistent
 

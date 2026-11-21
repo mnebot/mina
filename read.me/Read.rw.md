@@ -1,4 +1,4 @@
-**Ururimi: Ikinyarwanda · [Subira ku rutonde rw'indimi](../Read.md)**
+**Ururimi: Ikinyarwanda · [Subira ku rutonde rw'indimi](../readme.md)**
 
 # Umufasha w'urugo rw'ikoranabuhanga mu ndimi nyinshi
 

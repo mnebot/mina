@@ -1,4 +1,4 @@
-**Aragonés · [Tornar a triar a luenga](../Read.md)**
+**Aragonés · [Tornar a triar a luenga](../readme.md)**
 
 # Asistent de hogar intelichent multilingüe
 

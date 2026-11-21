@@ -1,4 +1,4 @@
-**Malti** · [Lura għall-għażla tal-lingwa](../Read.md)
+**Malti** · [Lura għall-għażla tal-lingwa](../readme.md)
 
 # Assistent domestiku multilingwi
 

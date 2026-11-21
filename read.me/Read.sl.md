@@ -1,4 +1,4 @@
-**Slovenščina · [Nazaj na izbiro jezika](../Read.md)**
+**Slovenščina · [Nazaj na izbiro jezika](../readme.md)**
 
 # Večjezični pomočnik za pametni dom
 

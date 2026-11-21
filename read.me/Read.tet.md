@@ -1,4 +1,4 @@
-**Lian: Tetum · [Fila ba hili lian](../Read.md)**
+**Lian: Tetum · [Fila ba hili lian](../readme.md)**
 
 # Asistente Uma Inteligente Multilingue
 

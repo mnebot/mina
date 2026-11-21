@@ -1,4 +1,4 @@
-**Nāhuatl · [Mocuepa xicpepena in tlahtōlli](../Read.md)**
+**Nāhuatl · [Mocuepa xicpepena in tlahtōlli](../readme.md)**
 # Cencalli tēpalēhuīlli miyac tlahtōl
 
 **Tlahtōlli:** Nāhuatl

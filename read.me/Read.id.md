@@ -1,4 +1,4 @@
-**Bahasa: Indonesia · [Kembali ke pilihan bahasa](../Read.md)**
+**Bahasa: Indonesia · [Kembali ke pilihan bahasa](../readme.md)**
 
 # Asisten Rumah Pintar Multibahasa
 
