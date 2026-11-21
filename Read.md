@@ -1,64 +1,176 @@
-# Assistent domòtic multiidioma
+# Mina
 
-Aquest projecte descriu el desplegament d'un ecosistema domòtic local sobre una Raspberry Pi amb un assistent de veu multilingüe.
+## Tria l'idioma
 
-## Origen del nom Mina
+Selecciona l'idioma per llegir la descripció del projecte. Tots els README es troben a la carpeta [`read.me/`](read.me/).
 
-**Mina** té arrel germànica antiga en *minna*, que significa «memòria», «afecte» o «record». També està present en altres llengües: en persa, *mīnā* es relaciona amb «llum» o «vidre blau», i en japonès, *mina* significa «tothom» o «tots junts».
+### Europa
 
-Aquestes interpretacions simbolitzen una **memòria compartida i comunitat**, valors coherents amb un assistent que acompanya i dona suport a la vida quotidiana de la llar.
+- [Català](read.me/Read.ca.md)
+- [English](read.me/Read.en.md)
+- [Español](read.me/Read.es.md)
+- [Français](read.me/Read.fr.md)
+- [Deutsch](read.me/Read.de.md)
+- [Italiano](read.me/Read.it.md)
+- [Português](read.me/Read.pt.md)
+- [Nederlands](read.me/Read.nl.md)
+- [Albanès](read.me/Read.sq.md)
+- [Aragonès](read.me/Read.an.md)
+- [Asturià](read.me/Read.ast.md)
+- [Basc](read.me/Read.eu.md)
+- [Bielorús](read.me/Read.be.md)
+- [Bosnià](read.me/Read.bs.md)
+- [Búlgar](read.me/Read.bg.md)
+- [Cors](read.me/Read.co.md)
+- [Croat](read.me/Read.hr.md)
+- [Txec](read.me/Read.cs.md)
+- [Danès](read.me/Read.da.md)
+- [Eslovac](read.me/Read.sk.md)
+- [Eslovè](read.me/Read.sl.md)
+- [Estonià](read.me/Read.et.md)
+- [Feroès](read.me/Read.fo.md)
+- [Finès](read.me/Read.fi.md)
+- [Friülà](read.me/Read.fur.md)
+- [Gallec](read.me/Read.gl.md)
+- [Grec](read.me/Read.el.md)
+- [Hongarès](read.me/Read.hu.md)
+- [Islandès](read.me/Read.is.md)
+- [Irlandès](read.me/Read.ga.md)
+- [Letó](read.me/Read.lv.md)
+- [Lituà](read.me/Read.lt.md)
+- [Luxemburguès](read.me/Read.lb.md)
+- [Macedoni](read.me/Read.mk.md)
+- [Maltès](read.me/Read.mt.md)
+- [Manx](read.me/Read.gv.md)
+- [Noruec bokmål](read.me/Read.nb.md)
+- [Noruec nynorsk](read.me/Read.nn.md)
+- [Occità](read.me/Read.oc.md)
+- [Polonès](read.me/Read.pl.md)
+- [Romanès](read.me/Read.ro.md)
+- [Rus](read.me/Read.ru.md)
+- [Sard](read.me/Read.sc.md)
+- [Gaèlic escocès](read.me/Read.gd.md)
+- [Serbi](read.me/Read.sr.md)
+- [Suec](read.me/Read.sv.md)
+- [Turc](read.me/Read.tr.md)
+- [Ucraiïnès](read.me/Read.uk.md)
+- [Gal·lès](read.me/Read.cy.md)
+- [Ídix](read.me/Read.yi.md)
 
-Pel que fa a l'aspecte sonor, Mina és un nom suau però clar, amb la pronunciació sil·làbica `Mi-na` i una baixa probabilitat de confusió amb paraules habituals dins dels entorns domèstics.
+### Orient Mitjà i Àsia Central
 
-## Objectiu
+- [Àrab](read.me/Read.ar.md)
+- [Armeni](read.me/Read.hy.md)
+- [Azerbaidjanès](read.me/Read.az.md)
+- [Dari](read.me/Read.prs.md)
+- [Georgià](read.me/Read.ka.md)
+- [Hebreu](read.me/Read.he.md)
+- [Kurd kurmanji](read.me/Read.ku.md)
+- [Kurd sorani](read.me/Read.ckb.md)
+- [Paixtu](read.me/Read.ps.md)
+- [Persa](read.me/Read.fa.md)
+- [Kazakh](read.me/Read.kk.md)
+- [Kirguís](read.me/Read.ky.md)
+- [Tadjik](read.me/Read.tg.md)
+- [Turcman](read.me/Read.tk.md)
+- [Uigur](read.me/Read.ug.md)
+- [Uzbek](read.me/Read.uz.md)
 
-Crear un sistema domòtic privat, fiable i ràpid que permeti controlar dispositius de la llar mitjançant ordres de veu sense dependència obligatòria de serveis al núvol.
+### Àsia Meridional
 
-L'arquitectura combina:
+- [Assami](read.me/Read.as.md)
+- [Bengalí](read.me/Read.bn.md)
+- [Bodo](read.me/Read.brx.md)
+- [Dogri](read.me/Read.doi.md)
+- [Gujarati](read.me/Read.gu.md)
+- [Hindi](read.me/Read.hi.md)
+- [Kannada](read.me/Read.kn.md)
+- [Caixmiri](read.me/Read.ks.md)
+- [Konkani](read.me/Read.kok.md)
+- [Maithili](read.me/Read.mai.md)
+- [Malaiàlam](read.me/Read.ml.md)
+- [Manipuri](read.me/Read.mni.md)
+- [Marathi](read.me/Read.mr.md)
+- [Nepalès](read.me/Read.ne.md)
+- [Odia](read.me/Read.or.md)
+- [Panjabi](read.me/Read.pa.md)
+- [Sànscrit](read.me/Read.sa.md)
+- [Santali](read.me/Read.sat.md)
+- [Sindhi](read.me/Read.sd.md)
+- [Singalès](read.me/Read.si.md)
+- [Tàmil](read.me/Read.ta.md)
+- [Telugu](read.me/Read.te.md)
+- [Urdú](read.me/Read.ur.md)
 
-- Processament local per a ordres domòtiques i privadesa.
-- Intel·ligència local amb Ollama per a preguntes generals.
-- Models al núvol per a consultes complexes i informació actualitzada.
+### Àsia Oriental i Sud-est Asiàtic
 
-## Maquinari
+- [Xinès simplificat](read.me/Read.zh-CN.md)
+- [Xinès tradicional](read.me/Read.zh-TW.md)
+- [Cantonès](read.me/Read.yue.md)
+- [Hakka](read.me/Read.hak.md)
+- [Japonès](read.me/Read.ja.md)
+- [Coreà](read.me/Read.ko.md)
+- [Mongol](read.me/Read.mn.md)
+- [Birmà](read.me/Read.my.md)
+- [Filipí (tagal)](read.me/Read.tl.md)
+- [Indonesi](read.me/Read.id.md)
+- [Javanès](read.me/Read.jv.md)
+- [Khmer](read.me/Read.km.md)
+- [Laosià](read.me/Read.lo.md)
+- [Malai](read.me/Read.ms.md)
+- [Tai](read.me/Read.th.md)
+- [Vietnamita](read.me/Read.vi.md)
+- [Sundanès](read.me/Read.su.md)
+- [Tetum](read.me/Read.tet.md)
+- [Tibetà](read.me/Read.bo.md)
+- [Hmong](read.me/Read.hmn.md)
+- [Cebuà](read.me/Read.ceb.md)
 
-- Raspberry Pi 5 amb 8 GB de RAM recomanats. Compatibilitat limitada fins a Rasberry Pi 3B+.
-- Disc SSD NVMe sense ús de targeta SD. Targeta SD amb compabilitat limitada.
-- Micròfon i altaveu USB bidireccionals.
-- Dispositius domòtics compatibles amb Zigbee, Matter, Philips Hue o Wi-Fi local.
-- Refrigeració activa per evitar el throttling tèrmic.
+### Àfrica
 
-## Arquitectura
+- [Afrikaans](read.me/Read.af.md)
+- [Amhàric](read.me/Read.am.md)
+- [Bambara](read.me/Read.bm.md)
+- [Amazic (tamazight)](read.me/Read.tzm.md)
+- [Ewe](read.me/Read.ee.md)
+- [Ful](read.me/Read.ff.md)
+- [Haussa](read.me/Read.ha.md)
+- [Igbo](read.me/Read.ig.md)
+- [Kinyarwanda](read.me/Read.rw.md)
+- [Lingala](read.me/Read.ln.md)
+- [Malgaix](read.me/Read.mg.md)
+- [Oromo](read.me/Read.om.md)
+- [Shona](read.me/Read.sn.md)
+- [Somali](read.me/Read.so.md)
+- [Suahili](read.me/Read.sw.md)
+- [Tigrinya](read.me/Read.ti.md)
+- [Tswana](read.me/Read.tn.md)
+- [Wòlof](read.me/Read.wo.md)
+- [Xosa](read.me/Read.xh.md)
+- [Ioruba](read.me/Read.yo.md)
+- [Zulu](read.me/Read.zu.md)
 
-1. Home Assistant OS gestiona els dispositius i les automatitzacions.
-2. openWakeWord detecta localment la paraula d'activació.
-3. Whisper transcriu ordres en l'idioma actiu mitjançant Wyoming.
-4. El processador d'intencions executa les ordres domòtiques localment.
-5. Piper sintetitza les respostes en català.
-6. Ollama resol preguntes generals sense enviar dades a Internet.
-7. AI al núvol només rep consultes explícites que requereixen IA avançada.
+### Amèrica i Carib
 
-## Funcionalitats previstes
+- [Aimara](read.me/Read.ay.md)
+- [Guaraní](read.me/Read.gn.md)
+- [Crioll haitià](read.me/Read.ht.md)
+- [Inuktitut](read.me/Read.iu.md)
+- [Navajo](read.me/Read.nv.md)
+- [Nàhuatl](read.me/Read.nah.md)
+- [Quítxua](read.me/Read.qu.md)
+- [Cherokee](read.me/Read.chr.md)
+- [Cree](read.me/Read.cr.md)
+- [Groenlandès](read.me/Read.kl.md)
+- [Mapudungun](read.me/Read.arn.md)
+- [Ojibwa](read.me/Read.oj.md)
+- [Papiament](read.me/Read.pap.md)
 
-- Control per veu de llums, endolls, climatització, persianes, etc.
-- Àlies multiidioma.
-- Temporitzadors gestionats per veu.
-- Consulta meteorològica local.
-- Reproducció i control de Música.
-- Fallback privat a un model d'Ollama.
-- Reconeixement de la persona per veu.
-- Memòria de context a llarg plaç.
-- Derivació opcional a un model d'IA al núvol.
-- Còpies de seguretat i monitorització del rendiment.
+### Oceania
 
-## Principis de disseny
-
-- Les ordres domòtiques han de funcionar sense connexió a Internet.
-- El processador d'intencions local té prioritat sobre els LLM.
-- Les dades d'àudio i les converses privades es processen preferentment en local.
-- Els models al núvol només s'utilitzen per a consultes explícites o complexes i si l'usuari ho ha sol·licitat explícitament al configurar l'assistent.
-- El sistema ha de mantenir temperatures i latències estables sota càrrega contínua.
-
-## Estat del projecte
-
-El projecte està definit com un backlog funcional. Les configuracions específiques, les automatitzacions i els scripts d'implantació s'hauran d'afegir a mesura que les històries d'usuari es vagin completant.
+- [Fijià](read.me/Read.fj.md)
+- [Hawaià](read.me/Read.haw.md)
+- [Maori](read.me/Read.mi.md)
+- [Samoà](read.me/Read.sm.md)
+- [Tongalès](read.me/Read.to.md)
+- [Tok pisin](read.me/Read.tpi.md)
