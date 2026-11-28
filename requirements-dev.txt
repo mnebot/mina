@@ -1,7 +1,1 @@
-# Fully pinned test environment. Keep in sync with [project.optional-dependencies].
-pytest==9.0.2
-iniconfig==2.3.0
-packaging==25.0
-pluggy==1.6.0
-Pygments==2.19.2
-colorama==0.4.6
+-r requirements.txt
