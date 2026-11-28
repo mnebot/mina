@@ -1,0 +1,216 @@
+name: Promote stable release
+
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_workflow_run_id:
+        description: Successful Publish candidate run ID to promote
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  deployments: read
+
+concurrency:
+  group: mina-stable-promotion
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      deployments: read
+      id-token: write
+    steps:
+      - name: Verify the successful candidate run
+        id: candidate
+        uses: actions/github-script@v7
+        env:
+          CANDIDATE_RUN_ID: ${{ inputs.candidate_workflow_run_id }}
+        with:
+          script: |
+            const runId = Number(process.env.CANDIDATE_RUN_ID);
+            if (!Number.isSafeInteger(runId) || runId < 1) {
+              throw new Error("candidate_workflow_run_id must be a positive run ID");
+            }
+            const { data: run } = await github.rest.actions.getWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: runId
+            });
+            if (!run.path.includes(".github/workflows/candidate.yml@") ||
+                run.event !== "workflow_run" ||
+                run.conclusion !== "success" ||
+                run.head_branch !== "master") {
+              throw new Error("The requested run is not a successful master candidate publication");
+            }
+            core.setOutput("commit", run.head_sha);
+            core.setOutput("run_number", String(run.run_number));
+            core.setOutput("run_id", String(run.id));
+
+      - name: Check out the tested candidate commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.candidate.outputs.commit }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install release helpers
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Derive stable and candidate versions
+        id: versions
+        env:
+          CANDIDATE_RUN_NUMBER: ${{ steps.candidate.outputs.run_number }}
+        run: |
+          set -euo pipefail
+          stable_version="$(python -c 'from pathlib import Path; from scripts.candidate_version import project_version; print(project_version(Path("pyproject.toml")))')"
+          candidate_version="$(python scripts/candidate_version.py --run-number "$CANDIDATE_RUN_NUMBER")"
+          echo "stable=${stable_version}" >> "$GITHUB_OUTPUT"
+          echo "candidate=${candidate_version}" >> "$GITHUB_OUTPUT"
+
+      - name: Verify successful device validation
+        uses: actions/github-script@v7
+        env:
+          CANDIDATE_RUN_ID: ${{ steps.candidate.outputs.run_id }}
+          CANDIDATE_COMMIT: ${{ steps.candidate.outputs.commit }}
+          CANDIDATE_VERSION: ${{ steps.versions.outputs.candidate }}
+        with:
+          script: |
+            const { data: deployments } = await github.rest.repos.listDeployments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: process.env.CANDIDATE_COMMIT,
+              environment: "mina-pi-candidate",
+              per_page: 100
+            });
+            const matching = deployments.filter((deployment) => {
+              let payload = deployment.payload;
+              if (typeof payload === "string") {
+                try {
+                  payload = JSON.parse(payload);
+                } catch {
+                  return false;
+                }
+              }
+              if (!payload || typeof payload !== "object") return false;
+              return String(payload.candidateWorkflowRunId) === process.env.CANDIDATE_RUN_ID &&
+                payload.candidateVersion === process.env.CANDIDATE_VERSION;
+            }).sort((left, right) => right.id - left.id);
+            if (matching.length === 0) {
+              throw new Error("No device-validation record exists for this candidate");
+            }
+            const { data: statuses } = await github.rest.repos.listDeploymentStatuses({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: matching[0].id,
+              per_page: 100
+            });
+            const latestStatus = statuses.sort((left, right) => right.id - left.id)[0];
+            if (!latestStatus || latestStatus.state !== "success") {
+              throw new Error("The latest device-validation result did not succeed");
+            }
+
+      - name: Set reproducible build timestamp
+        run: echo "SOURCE_DATE_EPOCH=$(git show -s --format=%ct HEAD)" >> "$GITHUB_ENV"
+
+      - name: Build stable wheel
+        run: python -m pip wheel . --no-deps --wheel-dir dist
+
+      - name: Verify stable wheel metadata
+        env:
+          RELEASE_VERSION: ${{ steps.versions.outputs.stable }}
+        run: |
+          python - "$RELEASE_VERSION" <<'PY'
+          import sys
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          expected = f"Version: {sys.argv[1]}"
+          wheel = next(Path("dist").glob("*.whl"))
+          with ZipFile(wheel) as archive:
+              metadata = next(name for name in archive.namelist() if name.endswith(".dist-info/METADATA"))
+              if expected not in archive.read(metadata).decode("utf-8").splitlines():
+                  raise SystemExit("Built wheel does not contain the stable version")
+          PY
+
+      - name: Check PyPI for an existing stable release
+        id: existing
+        env:
+          RELEASE_VERSION: ${{ steps.versions.outputs.stable }}
+        run: |
+          set -euo pipefail
+          wheel="$(find dist -maxdepth 1 -name '*.whl' -print -quit)"
+          test -n "$wheel"
+          python scripts/check_pypi_candidate.py \
+            --version "$RELEASE_VERSION" \
+            --wheel "$wheel" \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Publish stable release to PyPI
+        if: steps.existing.outputs.upload == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+
+      - name: Create matching tag and GitHub Release
+        uses: actions/github-script@v7
+        env:
+          RELEASE_VERSION: ${{ steps.versions.outputs.stable }}
+          SOURCE_COMMIT: ${{ steps.candidate.outputs.commit }}
+        with:
+          script: |
+            const version = process.env.RELEASE_VERSION;
+            const tag = `v${version}`;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const commit = process.env.SOURCE_COMMIT;
+            let ref;
+            try {
+              ({ data: ref } = await github.rest.git.getRef({
+                owner, repo, ref: `tags/${tag}`
+              }));
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              ({ data: ref } = await github.rest.git.createRef({
+                owner, repo, ref: `refs/tags/${tag}`, sha: commit
+              }));
+            }
+            let taggedCommit = ref.object.sha;
+            if (ref.object.type === "tag") {
+              const { data: annotatedTag } = await github.rest.git.getTag({
+                owner, repo, tag_sha: ref.object.sha
+              });
+              taggedCommit = annotatedTag.object.sha;
+            }
+            if (taggedCommit !== commit) {
+              throw new Error(`Tag ${tag} already points to a different commit`);
+            }
+
+            const body = [
+              `Install with \`python -m pip install mina-voice-assistant==${version}\`.`,
+              "",
+              `[PyPI ${version}](https://pypi.org/project/mina-voice-assistant/${version}/)`,
+              `[Release and installation documentation](https://github.com/${owner}/${repo}/blob/${tag}/docs/proces-de-publicacio.md)`
+            ].join("\n");
+            try {
+              await github.rest.repos.getReleaseByTag({ owner, repo, tag });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              await github.rest.repos.createRelease({
+                owner,
+                repo,
+                tag_name: tag,
+                target_commitish: commit,
+                name: tag,
+                body,
+                draft: false,
+                prerelease: false
+              });
+            }
