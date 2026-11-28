@@ -3,10 +3,14 @@ requires = ["setuptools==80.9.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mina"
+name = "mina-voice-assistant"
 version = "0.1.0"
 description = "Lightweight core for a multilingual home voice assistant."
 dependencies = []
+
+[project.scripts]
+mina = "mina.cli:main"
+mina-service = "mina.service:main"
 
 [project.optional-dependencies]
 test = ["pytest==9.0.2"]

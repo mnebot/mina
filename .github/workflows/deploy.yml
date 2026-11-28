@@ -1,0 +1,141 @@
+name: Deploy candidate to Raspberry Pi
+
+on:
+  workflow_run:
+    workflows:
+      - Publish candidate
+    types:
+      - completed
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: mina-candidate-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'workflow_run' &&
+      github.event.workflow_run.head_branch == 'master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the validated candidate commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deployment helpers
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Initialize redacted diagnostics
+        run: |
+          printf '%s\n' \
+            'Deployment failed before per-device results; inspect the failed workflow step.' \
+            'If deployment reached a device, its full logs are at /var/log/mina/deploy.log and /var/log/mina/service.log.' \
+            > "$RUNNER_TEMP/mina-deployment-diagnostics.txt"
+
+      - name: Determine candidate version
+        id: candidate
+        env:
+          CANDIDATE_RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
+        run: |
+          set -euo pipefail
+          version="$(python scripts/candidate_version.py --run-number "$CANDIDATE_RUN_NUMBER")"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+
+      - name: Register device validation
+        id: deployment
+        uses: actions/github-script@v7
+        env:
+          CANDIDATE_VERSION: ${{ steps.candidate.outputs.version }}
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: run.head_sha,
+              environment: "mina-pi-candidate",
+              description: `Validating ${process.env.CANDIDATE_VERSION}`,
+              auto_merge: false,
+              required_contexts: [],
+              transient_environment: true,
+              production_environment: false,
+              payload: JSON.stringify({
+                candidateWorkflowRunId: run.id,
+                candidateVersion: process.env.CANDIDATE_VERSION
+              })
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.data.id,
+              state: "in_progress",
+              log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            });
+            core.setOutput("deployment_id", String(deployment.data.id));
+
+      - name: Validate protected device inventory
+        env:
+          MINA_TARGETS_JSON: ${{ secrets.MINA_TARGETS_JSON }}
+        run: >-
+          python scripts/deployment_targets.py
+          --output "$RUNNER_TEMP/mina-targets.json"
+
+      - name: Connect runner to the tailnet
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:github-actions
+
+      - name: Deploy candidate to every configured device
+        run: |
+          set -euo pipefail
+          python scripts/deploy_candidate.py \
+            --inventory "$RUNNER_TEMP/mina-targets.json" \
+            --version "${{ steps.candidate.outputs.version }}" \
+            --diagnostics-file "$RUNNER_TEMP/mina-deployment-diagnostics.txt"
+
+      - name: Record device validation result
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
+          DEPLOYMENT_RESULT: ${{ job.status }}
+        with:
+          script: |
+            if (!process.env.DEPLOYMENT_ID) {
+              core.warning("No deployment record was created; stable promotion will remain blocked.");
+              return;
+            }
+            const state = process.env.DEPLOYMENT_RESULT === "success"
+              ? "success"
+              : process.env.DEPLOYMENT_RESULT === "cancelled"
+                ? "inactive"
+                : "failure";
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: Number(process.env.DEPLOYMENT_ID),
+              state,
+              log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            });
+
+      - name: Upload redacted deployment diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mina-deployment-diagnostics-${{ github.run_id }}
+          path: ${{ runner.temp }}/mina-deployment-diagnostics.txt
+          if-no-files-found: warn
+          retention-days: 7

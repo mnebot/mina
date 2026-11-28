@@ -1,0 +1,26 @@
+[Unit]
+Description=Mina local text service
+After=local-fs.target
+
+[Service]
+Type=simple
+User=mina
+Group=mina
+WorkingDirectory=/opt/mina/current
+RuntimeDirectory=mina
+RuntimeDirectoryMode=0750
+UMask=0007
+ExecStart=/opt/mina/current/bin/mina-service --socket-path /run/mina/mina.sock
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=5
+StandardOutput=append:/var/log/mina/service.log
+StandardError=append:/var/log/mina/service.log
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/run/mina /var/log/mina
+
+[Install]
+WantedBy=multi-user.target
