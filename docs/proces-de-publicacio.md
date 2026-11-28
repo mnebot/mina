@@ -47,7 +47,7 @@ Desa aquestes dades com a secrets protegits del repositori GitHub; no les afegei
   {"devices":[{"alias":"pi-cuina","host":"mina-cuina.<tailnet>.ts.net","user":"mina-deploy"}]}
   ```
 
-- `TAILSCALE_OAUTH_CLIENT_ID` i `TAILSCALE_OAUTH_SECRET`: credencials d'un client OAuth de Tailscale limitat a l'etiqueta de runner (per exemple, `tag:github-actions`). Configura les ACL perquè aquest runner només pugui arribar als dispositius de desplegament i assigna-li el mínim privilegi necessari.
+- `TS_OAUTH_CLIENT_ID` i `TS_OAUTH_SECRET`: credencials d'un client OAuth de Tailscale limitat a l'etiqueta de runner (per exemple, `tag:github-actions`). Configura les ACL perquè aquest runner només pugui arribar als dispositius de desplegament i assigna-li el mínim privilegi necessari.
 
 Prepara cada Pi una sola vegada com a administrador:
 

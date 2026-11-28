@@ -66,3 +66,21 @@ L'arquitectura combina:
 ## Estat del projecte
 
 El projecte està definit com un backlog funcional. Les configuracions específiques, les automatitzacions i els scripts d'implantació s'hauran d'afegir a mesura que les històries d'usuari es vagin completant.
+
+## CI, publicació i desplegament
+
+El workflow de CI valida els canvis en les PR i els pushos a `master`. Després d'un push correcte a `master`, es publica una versió candidata a PyPI i es desplega a les Raspberry Pi configurades.
+
+Per activar el desplegament, crea aquests **repository secrets** a GitHub, a **Settings → Secrets and variables → Actions**:
+
+- `MINA_TARGETS_JSON`: inventari JSON de les Raspberry Pi. Cada dispositiu necessita un àlies únic, un host accessible pel tailnet de Tailscale i un usuari Linux sense privilegis de root. Exemple:
+
+  ```json
+  {"devices":[{"alias":"pi-cuina","host":"mina-cuina.<tailnet>.ts.net","user":"mina-deploy"}]}
+  ```
+
+- `TS_OAUTH_CLIENT_ID` i `TS_OAUTH_SECRET`: credencials d'un client OAuth de Tailscale amb l'etiqueta `tag:github-actions`. Limita les ACL perquè el runner només pugui accedir a les Pi de desplegament.
+
+La publicació a PyPI utilitza **Trusted Publishing amb OIDC**: no cal crear ni desar cap token de PyPI a GitHub. Configura els workflows `candidate.yml` i `stable.yml` com a publicadors de GitHub Actions a PyPI. Cal preparar cada Pi una vegada abans del primer desplegament.
+
+Per a tots els passos de configuració i bootstrap, consulta el [procés de publicació](../docs/proces-de-publicacio.md).
