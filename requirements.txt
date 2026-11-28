@@ -1,8 +1,8 @@
 # Fully pinned build and test environment.
 setuptools==80.9.0
-pytest==9.0.2
+pytest==9.0.3
 iniconfig==2.3.0
 packaging==25.0
 pluggy==1.6.0
-Pygments==2.19.2
+Pygments==2.20.0
 colorama==0.4.6
