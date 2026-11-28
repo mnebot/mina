@@ -166,7 +166,7 @@ Selecciona l'idioma per llegir la descripció del projecte. Tots els README es t
 - [Ojibwa](read.me/Read.oj.md)
 - [Papiament](read.me/Read.pap.md)
 
-### Oceania
+### Oceania 
 
 - [Fijià](read.me/Read.fj.md)
 - [Hawaià](read.me/Read.haw.md)
