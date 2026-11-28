@@ -66,3 +66,24 @@ L'arquitectura combina:
 ## Estat del projecte
 
 El projecte està definit com un backlog funcional. Les configuracions específiques, les automatitzacions i els scripts d'implantació s'hauran d'afegir a mesura que les històries d'usuari es vagin completant.
+
+## CI, publicació i desplegament
+
+El workflow de CI valida els canvis en les PR i els pushos a `master`. Després d'una PR validada de la mateixa repo, es publica una versió candidata a PyPI i es desplega a les Pi de prova. Després del merge, es publica i desplega un nou candidat de `master` als dispositius configurats. Les PRs de forks no publiquen ni despleguen candidats.
+
+Per activar el desplegament, crea aquests **repository secrets** a GitHub, a **Settings → Secrets and variables → Actions**:
+
+- `MINA_PR_TARGETS_JSON`: inventari JSON separat amb les Pi de prova que rebran candidats de PR.
+- `MINA_TARGETS_JSON`: inventari JSON amb les Pi de desplegament que rebran candidats de `master`.
+
+Cada inventari ha de contenir una llista no buida de dispositius. Cada dispositiu necessita un àlies únic, un host accessible pel tailnet de Tailscale i un usuari Linux sense privilegis de root. Exemple:
+
+  ```json
+  {"devices":[{"alias":"pi-cuina","host":"mina-cuina.<tailnet>.ts.net","user":"mina-deploy"}]}
+  ```
+
+- `TS_OAUTH_CLIENT_ID` i `TS_OAUTH_SECRET`: credencials d'un client OAuth de Tailscale amb l'etiqueta `tag:github-actions`. Limita les ACL perquè el runner només pugui accedir a les Pi de prova i de desplegament.
+
+La publicació a PyPI utilitza **Trusted Publishing amb OIDC**: no cal crear ni desar cap token de PyPI a GitHub. Configura els workflows `candidate.yml` i `stable.yml` com a publicadors de GitHub Actions a PyPI. El candidat de PR només es prova a l'inventari separat; `stable` només es pot promocionar després del merge i de validar el candidat de `master`. Cal preparar cada Pi una vegada abans del primer desplegament.
+
+Per a tots els passos de configuració i bootstrap, consulta el [procés de publicació](../docs/proces-de-publicacio.md).
