@@ -1,6 +1,6 @@
 # Mina
 
-## Tria l'idioma
+## Tria l'idioma 
 
 Selecciona l'idioma per llegir la descripció del projecte. Tots els README es troben a la carpeta [`read.me/`](read.me/).
 
