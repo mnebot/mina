@@ -49,10 +49,9 @@ jobs:
                 throw new Error("Expected exactly one pull request for the CI run");
               }
               const association = associations[0];
-              if (association.base.ref !== "master" ||
-                  association.head.repo?.full_name !== `${context.repo.owner}/${context.repo.repo}` ||
+              if (association.head.repo?.id !== run.head_repository?.id ||
                   association.head.sha !== run.head_sha) {
-                throw new Error("The CI run is not for a same-repository master pull request");
+                throw new Error("The CI run does not match its pull-request association");
               }
               const { data: pullRequest } = await github.rest.pulls.get({
                 owner: context.repo.owner,
