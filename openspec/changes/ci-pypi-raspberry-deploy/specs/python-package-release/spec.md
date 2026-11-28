@@ -24,19 +24,27 @@ The Python distribution published to PyPI SHALL be named `mina-voice-assistant` 
 - **WHEN** a user installs `mina-voice-assistant`
 - **THEN** the installed package can be imported as `mina`
 
-### Requirement: Merged changes publish unique prereleases
-After a validated change is merged to `master`, the release flow SHALL publish a unique prerelease version based on the next stable version.
+### Requirement: Validated same-repository changes publish unique prereleases
+After successful CI for a same-repository pull request or a push to `master`, the release flow SHALL publish a unique prerelease version based on the next stable version. Fork pull requests SHALL NOT receive PyPI publishing permissions.
+
+#### Scenario: Same-repository pull request passes CI
+- **WHEN** a same-repository pull request targeting `master` passes CI
+- **THEN** a unique `x.y.z.devN` version of `mina-voice-assistant` is published to PyPI for test-device validation
 
 #### Scenario: A validated change is merged
-- **WHEN** a successful CI-validated change is merged to `master`
-- **THEN** a unique `x.y.z.devN` version of `mina-voice-assistant` is published to PyPI for device validation
+- **WHEN** a push to `master` passes CI
+- **THEN** a unique `x.y.z.devN` version of `mina-voice-assistant` is published to PyPI for deployment-device validation
 
 #### Scenario: CI validation fails
-- **WHEN** the merged change does not pass its required validation
+- **WHEN** the candidate-triggering CI run does not pass its required validation
 - **THEN** no prerelease is published
 
-### Requirement: Stable releases require a successful candidate and manual dispatch
-The release flow SHALL publish a stable version and create its matching version tag only after the corresponding prerelease passes device validation and an operator manually dispatches the release.
+#### Scenario: A fork pull request passes CI
+- **WHEN** a pull request from a fork passes CI
+- **THEN** no PyPI publishing or device-deployment job receives credentials or runs
+
+### Requirement: Stable releases require a successful master candidate and manual dispatch
+The release flow SHALL publish a stable version and create its matching version tag only after a candidate built from a successful `master` push passes device validation and an operator manually dispatches the release. A PR candidate SHALL NOT be promotable.
 
 #### Scenario: The candidate passes and release is manually dispatched
 - **WHEN** device validation succeeds for a candidate and the operator manually dispatches its stable release

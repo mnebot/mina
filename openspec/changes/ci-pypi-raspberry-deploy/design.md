@@ -9,7 +9,7 @@ The repository is public. Device addresses and credentials therefore must not be
 ## Goals / Non-Goals
 
 **Goals:**
-- Keep the candidate package that is tested on devices tied to a specific merge commit and immutable prerelease version.
+- Keep each candidate package that is tested on devices tied to a specific CI-validated commit and immutable prerelease version.
 - Prevent a failed device update from leaving a previously working service down where rollback is possible.
 - Keep requests local to the device and keep user-submitted text out of operational and uploaded diagnostic logs.
 - Make stable publication and user-facing release notes a deliberate final action after device validation.
@@ -21,21 +21,21 @@ The repository is public. Device addresses and credentials therefore must not be
 
 ## Decisions
 
-### Separate validation, candidate deployment, and stable promotion
+### Validate PR candidates before merge and revalidate master before stable promotion
 
 Use three workflow phases:
 
 1. **CI** runs on pull requests and changes to `master`; it runs the existing regression suite, builds the distribution, and smoke-tests an installation of the built wheel.
-2. **Candidate distribution/deployment** runs after a successful merge to `master`. It derives a unique PEP 440 prerelease (`x.y.z.devN`) from the next stable version and the workflow run, publishes that exact candidate to PyPI, then deploys it to the configured Raspberry Pi devices. A candidate is not a stable release.
-3. **Stable promotion** is a manually dispatched workflow after all configured devices pass. The dispatch is the manual approval. It rebuilds the same source commit with its stable `x.y.z` version, publishes it to PyPI, creates the matching `vX.Y.Z` tag, and creates a GitHub Release containing installation instructions and links to PyPI and documentation.
+2. **Candidate distribution/deployment** runs after successful CI for same-repository pull requests and pushes to `master`. It derives a unique PEP 440 prerelease (`x.y.z.devN`), publishes that exact candidate to PyPI, and deploys it in the same workflow. Pull requests use the separate protected test-device inventory; pushes to `master` use the configured deployment inventory. Fork pull requests cannot enter the privileged candidate path. Candidate workflow logic must be present on the default branch before it can react to CI completion, so this initial pipeline change cannot candidate-deploy its own PR; later PRs can.
+3. **Stable promotion** is a manually dispatched workflow after a master candidate has passed deployment to all configured devices. The dispatch is the manual approval. It rebuilds the same source commit with its stable `x.y.z` version, publishes it to PyPI, creates the matching `vX.Y.Z` tag, and creates a GitHub Release containing installation instructions and links to PyPI and documentation. A PR candidate alone is never eligible for stable promotion; the merged master commit gets its own candidate and device validation first.
 
-This keeps a single, immutable candidate version for device testing. A failed candidate is not overwritten; a later merge produces another unique prerelease. `pyproject.toml` must identify the next stable base version before its candidate is published. Retries must recognize an already-published candidate and verify/use that exact artifact rather than attempt to replace it.
+This keeps each immutable candidate tied to a CI run. A failed candidate is not overwritten; a later CI run produces another unique prerelease. `pyproject.toml` must identify the next stable base version before a candidate is published. Retries must recognize an already-published candidate and verify/use that exact artifact rather than attempt to replace it.
 
-Use PyPI Trusted Publishing/OIDC for publication instead of long-lived upload credentials. Before release, the owner must claim/configure `mina-voice-assistant` and its trusted publisher; availability should be rechecked because a 404 lookup is not a reservation.
+Use PyPI Trusted Publishing/OIDC for publication instead of long-lived upload credentials. Separate the unprivileged PR build from the privileged PyPI upload and device-deployment jobs: build the PR wheel without secrets, then let trusted workflow steps publish the wheel and run deployment helpers from the default branch. Before release, the owner must claim/configure `mina-voice-assistant` and its trusted publisher; availability should be rechecked because a 404 lookup is not a reservation.
 
 ### Keep the device inventory and access private
 
-Store the JSON target inventory and access credentials in protected GitHub configuration, not in the public repository. The candidate workflow validates the inventory before connecting and deploys to all configured devices. It joins the existing Tailscale network and uses private device access; no public SSH port is required. Each device is reported independently, but any failed device blocks stable promotion.
+Store the PR test inventory, production target inventory, and access credentials in protected GitHub configuration, not in the public repository. The candidate workflow selects the PR test inventory for same-repository pull requests and the production inventory for master candidates, validates it before connecting, and uses Tailscale private device access; no public SSH port is required. Each device is reported independently, but any failed master-candidate device blocks stable promotion.
 
 ### Run the core behind a local resident service
 
@@ -65,7 +65,8 @@ Retain full deployment/service logs on the device under `/var/log/mina/`. The wo
 
 ## Migration Plan
 
-1. Configure the PyPI trusted publisher and protected GitHub/Tailscale settings, including the private device inventory.
-2. Release a candidate through the merge path and validate the first service installation on the configured devices.
-3. After successful device checks, manually dispatch stable promotion for the tested commit; publish the stable version, create its tag, and publish its GitHub Release notes.
-4. If stable promotion fails before publication, no stable tag is created. If a candidate update fails, restore the previous device environment where one exists and retain its diagnostics.
+1. Configure the PyPI trusted publisher and protected GitHub/Tailscale settings, including a separate test-device inventory for PR candidates.
+2. Merge the pipeline change so its candidate workflow exists on the default branch; it can then react to successful CI runs for later same-repository PRs.
+3. Validate PR candidates on test devices. After merge, validate the separate master candidate on the configured deployment devices.
+4. After successful master-candidate device checks, manually dispatch stable promotion for the tested commit; publish the stable version, create its tag, and publish its GitHub Release notes.
+5. If stable promotion fails before publication, no stable tag is created. If a candidate update fails, restore the previous device environment where one exists and retain its diagnostics.

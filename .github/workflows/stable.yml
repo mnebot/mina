@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       candidate_workflow_run_id:
-        description: Successful Publish candidate run ID to promote
+        description: Successful master Candidate and deploy run ID to promote
         required: true
         type: string
 
@@ -43,18 +43,71 @@ jobs:
             });
             if (!run.path.includes(".github/workflows/candidate.yml@") ||
                 run.event !== "workflow_run" ||
-                run.conclusion !== "success" ||
-                run.head_branch !== "master") {
-              throw new Error("The requested run is not a successful master candidate publication");
+                run.conclusion !== "success") {
+              throw new Error("The requested run is not a successful candidate workflow");
             }
-            core.setOutput("commit", run.head_sha);
             core.setOutput("run_number", String(run.run_number));
             core.setOutput("run_id", String(run.id));
+
+      - name: Verify successful master-candidate device validation
+        id: device
+        uses: actions/github-script@v7
+        env:
+          CANDIDATE_RUN_ID: ${{ steps.candidate.outputs.run_id }}
+        with:
+          script: |
+            const deployments = await github.paginate(
+              github.rest.repos.listDeployments,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                environment: "mina-pi-candidate",
+                per_page: 100
+              }
+            );
+            const matching = deployments.filter((deployment) => {
+              let payload = deployment.payload;
+              if (typeof payload === "string") {
+                try {
+                  payload = JSON.parse(payload);
+                } catch {
+                  return false;
+                }
+              }
+              if (!payload || typeof payload !== "object") return false;
+              return String(payload.candidateWorkflowRunId) === process.env.CANDIDATE_RUN_ID &&
+                payload.sourceEvent === "push" &&
+                payload.sourceBranch === "master" &&
+                typeof payload.sourceCommit === "string" &&
+                /^[0-9a-f]{40}$/i.test(payload.sourceCommit) &&
+                deployment.ref === payload.sourceCommit &&
+                typeof payload.candidateVersion === "string";
+            }).sort((left, right) => right.id - left.id);
+            if (matching.length === 0) {
+              throw new Error("No successful master-candidate deployment record exists");
+            }
+            const deployment = matching[0];
+            const payload = typeof deployment.payload === "string"
+              ? JSON.parse(deployment.payload)
+              : deployment.payload;
+            const { data: statuses } = await github.rest.repos.listDeploymentStatuses({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.id,
+              per_page: 100
+            });
+            const latestStatus = statuses.sort((left, right) => right.id - left.id)[0];
+            if (!latestStatus || latestStatus.state !== "success") {
+              throw new Error("The latest master-candidate device validation did not succeed");
+            }
+            core.setOutput("commit", payload.sourceCommit);
+            core.setOutput("candidate_version", payload.candidateVersion);
 
       - name: Check out the tested candidate commit
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.candidate.outputs.commit }}
+          ref: ${{ steps.device.outputs.commit }}
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -68,54 +121,14 @@ jobs:
         id: versions
         env:
           CANDIDATE_RUN_NUMBER: ${{ steps.candidate.outputs.run_number }}
+          EXPECTED_CANDIDATE_VERSION: ${{ steps.device.outputs.candidate_version }}
         run: |
           set -euo pipefail
           stable_version="$(python -c 'from pathlib import Path; from scripts.candidate_version import project_version; print(project_version(Path("pyproject.toml")))')"
           candidate_version="$(python scripts/candidate_version.py --run-number "$CANDIDATE_RUN_NUMBER")"
+          test "$candidate_version" = "$EXPECTED_CANDIDATE_VERSION"
           echo "stable=${stable_version}" >> "$GITHUB_OUTPUT"
           echo "candidate=${candidate_version}" >> "$GITHUB_OUTPUT"
-
-      - name: Verify successful device validation
-        uses: actions/github-script@v7
-        env:
-          CANDIDATE_RUN_ID: ${{ steps.candidate.outputs.run_id }}
-          CANDIDATE_COMMIT: ${{ steps.candidate.outputs.commit }}
-          CANDIDATE_VERSION: ${{ steps.versions.outputs.candidate }}
-        with:
-          script: |
-            const { data: deployments } = await github.rest.repos.listDeployments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: process.env.CANDIDATE_COMMIT,
-              environment: "mina-pi-candidate",
-              per_page: 100
-            });
-            const matching = deployments.filter((deployment) => {
-              let payload = deployment.payload;
-              if (typeof payload === "string") {
-                try {
-                  payload = JSON.parse(payload);
-                } catch {
-                  return false;
-                }
-              }
-              if (!payload || typeof payload !== "object") return false;
-              return String(payload.candidateWorkflowRunId) === process.env.CANDIDATE_RUN_ID &&
-                payload.candidateVersion === process.env.CANDIDATE_VERSION;
-            }).sort((left, right) => right.id - left.id);
-            if (matching.length === 0) {
-              throw new Error("No device-validation record exists for this candidate");
-            }
-            const { data: statuses } = await github.rest.repos.listDeploymentStatuses({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: matching[0].id,
-              per_page: 100
-            });
-            const latestStatus = statuses.sort((left, right) => right.id - left.id)[0];
-            if (!latestStatus || latestStatus.state !== "success") {
-              throw new Error("The latest device-validation result did not succeed");
-            }
 
       - name: Set reproducible build timestamp
         run: echo "SOURCE_DATE_EPOCH=$(git show -s --format=%ct HEAD)" >> "$GITHUB_ENV"
@@ -163,7 +176,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           RELEASE_VERSION: ${{ steps.versions.outputs.stable }}
-          SOURCE_COMMIT: ${{ steps.candidate.outputs.commit }}
+          SOURCE_COMMIT: ${{ steps.device.outputs.commit }}
         with:
           script: |
             const version = process.env.RELEASE_VERSION;

@@ -6,16 +6,24 @@ Defines automatic deployment and verification of Mina prereleases on configured 
 
 ## ADDED Requirements
 
-### Requirement: Merged prereleases deploy to the configured devices
-After a prerelease is published for a validated merge to `master`, the deployment flow SHALL automatically target every Raspberry Pi in the protected device inventory.
+### Requirement: PR and master candidates deploy to separate inventories
+After successful CI for a same-repository pull request or a push to `master`, the candidate workflow SHALL automatically deploy the published prerelease to the inventory appropriate to that event. Pull requests SHALL use a separate protected test-device inventory; master candidates SHALL use the protected deployment inventory.
 
-#### Scenario: A candidate and device inventory are available
-- **WHEN** a validated prerelease is published and the protected inventory contains configured devices
-- **THEN** deployment starts automatically for every device in that inventory
+#### Scenario: A pull-request candidate and test inventory are available
+- **WHEN** a same-repository pull request passes CI and the protected test inventory contains configured devices
+- **THEN** the candidate workflow automatically deploys the prerelease to every device in the test inventory
+
+#### Scenario: A master candidate and deployment inventory are available
+- **WHEN** a push to `master` passes CI and the protected deployment inventory contains configured devices
+- **THEN** the candidate workflow automatically deploys the prerelease to every device in the deployment inventory
 
 #### Scenario: The device inventory is missing or invalid
 - **WHEN** deployment starts without a valid protected device inventory
 - **THEN** it fails without attempting to connect to unconfigured devices and stable release promotion is blocked
+
+#### Scenario: A pull request comes from a fork
+- **WHEN** a pull request from a fork passes CI
+- **THEN** no privileged candidate publication or device deployment runs
 
 ### Requirement: Devices are reached through the private tailnet
 The deployment flow SHALL reach devices through the configured Tailscale network and SHALL NOT require publicly exposed SSH access.
@@ -38,9 +46,9 @@ The deployment flow SHALL ensure a Mina system service exists, stop it before ch
 ### Requirement: Device verification gates stable promotion
 After the service starts, deployment SHALL verify the installed candidate version and the service's text request/response behavior on every configured device.
 
-#### Scenario: Every device passes verification
-- **WHEN** all configured devices report the requested candidate version and return the expected response to a text request
-- **THEN** device validation succeeds and the candidate is eligible for stable release
+#### Scenario: Every master deployment device passes verification
+- **WHEN** all devices in the protected deployment inventory report the requested candidate version and return the expected response to a text request
+- **THEN** device validation succeeds and the master candidate is eligible for stable release
 
 #### Scenario: Any device fails verification
 - **WHEN** installation, service startup, version verification, or the text request check fails on any device

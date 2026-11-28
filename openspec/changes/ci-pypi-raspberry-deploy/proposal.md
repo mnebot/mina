@@ -7,10 +7,11 @@ Mina has no automated validation, package release, or Raspberry Pi runtime updat
 ## What Changes
 
 - Add CI validation for pull requests and primary-branch changes, including the existing regression tests and a built-package smoke check.
-- On a successful merge to `master`, publish a unique `x.y.z.devN` prerelease of the `mina-voice-assistant` distribution and automatically deploy it to every Raspberry Pi target configured in a protected GitHub secret.
+- After successful CI for a same-repository pull request or a push to `master`, publish a unique `x.y.z.devN` prerelease of the `mina-voice-assistant` distribution and automatically deploy it. Pull-request candidates use a separate protected test-device inventory; master candidates use the configured deployment inventory.
+- Combine candidate publication and Raspberry Pi deployment in one workflow. Fork pull requests receive CI only and cannot enter the privileged candidate path.
 - Add a resident `systemd` service and a CLI client that sends text over a local Unix socket and returns the existing core acknowledgement.
 - Reach devices through Tailscale; stop the service, update the package with the device's installed Python, restart it, and verify both installed version and text response.
-- After successful device checks, use a manually triggered release workflow as the approval to publish the stable version, create its version tag, and generate user-facing release notes with installation instructions and PyPI/documentation links.
+- After a master candidate passes device checks, use a manually triggered release workflow as the approval to publish the stable version, create its version tag, and generate user-facing release notes with installation instructions and PyPI/documentation links.
 - Preserve the Python import package name `mina`; hardware integrations such as audio and Hue remain out of scope.
 
 ## Capabilities
