@@ -4,7 +4,7 @@
 
 Selecciona l'idioma per llegir la descripció del projecte. Tots els README es troben a la carpeta [`read.me/`](read.me/).
 
-### Europa
+### Europa 
 
 - [Català](read.me/Read.ca.md)
 - [English](read.me/Read.en.md)
